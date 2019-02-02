@@ -1,3 +1,14 @@
-body {
-  font-family: tahoma, sans-serif;
+#app {
+  margin-left: 50px;
+}
+
+li {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  padding: 15px;
+  font-size: 100px;
+  margin-bottom: 15px;
 }
