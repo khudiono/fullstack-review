@@ -7,6 +7,7 @@ import RepoList from './components/RepoList.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.server = 'http://localhost:1128/'
     this.state = {
       repos: []
     }
@@ -20,7 +21,7 @@ class App extends React.Component {
     console.log(`${term} was searched`);
     var data = JSON.stringify({username: term});
     $.ajax({
-      url: 'http://localhost:1128/repos',
+      url: `${this.server}/repos`,
       method: 'POST',
       contentType: 'application/json',
       data: data,
@@ -36,14 +37,26 @@ class App extends React.Component {
 
   get() {
     $.ajax({
-      url: 'http://localhost:1128/repos',
+      url: `${this.server}/repos`,
       method: 'GET',
       success: (data) => {
         console.log('SUCCESS GET', data);
         this.setState({repos: data.repos});
       },
       error: data => {
+        this.server = 'https://github-fetcher-201802.herokuapp.com/';
         console.log('ERROR ', data);
+        $.ajax({
+          url: `${this.server}/repos`,
+          method: 'GET',
+          success: (data) => {
+            console.log('SUCCESS GET', data);
+            this.setState({repos: data.repos});
+          },
+          error: data => {
+            console.log('ERROR ', data);
+          }
+        })
       }
     })
   }
