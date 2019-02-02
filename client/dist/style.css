@@ -1,5 +1,6 @@
 #app {
-  margin-left: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 li {
@@ -11,4 +12,9 @@ h1 {
   padding: 15px;
   font-size: 100px;
   margin-bottom: 15px;
+}
+
+span {
+  color: gray;
+  font-size: 12px;
 }

@@ -12,7 +12,7 @@ let Repo = mongoose.model('Repo', repoSchema);
 
 let save = (repo) => {
   var newRepo = new Repo (repo);
-  newRepo.save(err => {
+  newRepo.save((err,data) => {
     if(err) {
       console.log(err);
     } else {
@@ -21,13 +21,13 @@ let save = (repo) => {
   });
 }
 
-let getPopular = function(callback){
+let getPopular = function(cb){
   Repo.find().sort({forks_count:-1}).limit(25).exec((err, repos) => {
       if(err) {
         console.log('err', err)
       } else {
         // console.log('SUCCESS! POPULAR', typeof repos)
-        callback(repos)
+        cb(repos)
       }
     });
 }

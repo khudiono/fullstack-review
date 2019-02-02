@@ -24,8 +24,8 @@ class App extends React.Component {
       method: 'POST',
       contentType: 'application/json',
       data: data,
-      success: () => {
-      console.log('SUCCESS POST');
+      success: (repos) => {
+      console.log('SUCCESS POST', repos);
       this.get();
       },
       error: (data) => {
@@ -54,6 +54,7 @@ class App extends React.Component {
       <h1> Github Fetcher </h1>
       </div>
       <RepoList repos={this.state.repos}/>
+      <br></br><br></br>
       <Search onSearch={this.search.bind(this)}/>
       <br></br><br></br>
     </div>
