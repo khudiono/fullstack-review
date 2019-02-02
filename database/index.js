@@ -12,7 +12,7 @@ let repoSchema = mongoose.Schema({
   forks_count: {type: Number, required: true}
 });
 
-let Repo = mongoose.model('Repo', repoSchema);
+let Repo = mongoose.model('repos', repoSchema);
 
 let save = (repo) => {
   var newRepo = new Repo (repo);
