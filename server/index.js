@@ -1,7 +1,6 @@
 const express = require('express');
 const getReposByUsername = require('../helpers/github.js').getReposByUsername;
 const saveRepo = require('../database/index.js').save;
-const Repo = require('../database/index.js').Repo;
 const getPopular = require('../database/index.js').getPopular;
 const parser = require('body-parser');
 let app = express();
@@ -10,7 +9,6 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(parser.json());
 
 app.post('/repos', function (req, res) {
-  // console.log('request', req.body);
   var repoArr =[];
   getReposByUsername(req.body.username, (repos) => {
     repos.forEach(repo => {
@@ -35,7 +33,7 @@ app.get('/repos', function (req, res) {
   })
 });
 
-let port = 1128;
+let port = process.env.PORT || 1128;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

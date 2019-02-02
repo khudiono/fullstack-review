@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fetcher');
 let repoSchema = mongoose.Schema({
   id: {type: String, unique: true},
-  name: {type: String, required: true}, //repo name
+  name: {type: String, required: true}, // user/repo name
   url: {type: String, required: true}, //url to repo
   updated_at: String,
   forks_count: {type: Number, required: true}
@@ -26,7 +26,6 @@ let getPopular = function(cb){
       if(err) {
         console.log('err', err)
       } else {
-        // console.log('SUCCESS! POPULAR', typeof repos)
         cb(repos)
       }
     });
