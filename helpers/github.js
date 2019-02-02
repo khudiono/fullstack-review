@@ -1,6 +1,5 @@
 const request = require('request');
-const config = require('../config.js');
-const githubAuthToken = process.env.TOKEN || config.TOKEN;
+const githubAuthToken = process.env.TOKEN || require('../config.js');
 
 let getReposByUsername = (username, cb) => {
   let options = {
