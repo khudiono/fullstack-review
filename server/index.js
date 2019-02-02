@@ -27,7 +27,7 @@ app.post('/repos', function (req, res) {
   });
 });
 
-app.get('/repos', function (req, res) {
+app.get('https://github-fetcher-201802.herokuapp.com/', function (req, res) {
   getPopular((repos) => {
     res.json({repos});
   })
