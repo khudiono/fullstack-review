@@ -21,7 +21,7 @@ class App extends React.Component {
     console.log(`${term} was searched`);
     var data = JSON.stringify({username: term});
     $.ajax({
-      url: `${this.server}/repos`,
+      url: `${this.server}repos`,
       method: 'POST',
       contentType: 'application/json',
       data: data,
@@ -37,7 +37,7 @@ class App extends React.Component {
 
   get() {
     $.ajax({
-      url: `${this.server}/repos`,
+      url: `${this.server}repos`,
       method: 'GET',
       success: (data) => {
         console.log('SUCCESS GET', data);
@@ -47,7 +47,7 @@ class App extends React.Component {
         this.server = 'https://github-fetcher-201802.herokuapp.com/';
         console.log('ERROR ', data);
         $.ajax({
-          url: `${this.server}/repos`,
+          url: `${this.server}repos`,
           method: 'GET',
           success: (data) => {
             console.log('SUCCESS GET', data);
