@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fetcher');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fetcher', (err, data) => {
+  if (err) {
+    console.log(err);
+  }
+});
 let repoSchema = mongoose.Schema({
   id: {type: String, unique: true},
   name: {type: String, required: true}, // user/repo name
